@@ -103,4 +103,25 @@ button{
     background-color: #ffffff;
     transform: scale(0.7);
 }
+/* 1. ต้องบอกให้กล่องแม่ (input-group) เป็นจุดอ้างอิง */
+.input-group {
+    position: relative; 
+    margin-bottom: 20px; /* เพิ่มระยะห่างหน่อย */
+}
+
+/* 2. ปรับแต่ง input ให้มีที่ว่างด้านขวา เพื่อไม่ให้ข้อความทับไอคอน */
+.input-group input {
+    width: 100%;
+    padding-right: 40px; /* เว้นที่ด้านขวาไว้ใส่รูปตา */
+    box-sizing: border-box; /* ให้ padding ไม่ทำให้กล่องบวม */
+}
+
+/* 3. จัดตำแหน่งไอคอนรูปตา */
+.input-group i {
+    position: absolute;
+    right: 10px; /* ชิดขวา 10px */
+    top: 38px;   /* ดันลงมาให้ตรงกลางช่อง (ปรับเลขนี้ตามความสวยงามหน้าเว็บคุณ) */
+    cursor: pointer; /* เมาส์ชี้แล้วเป็นรูปมือ */
+    color: #888;
+}
 
