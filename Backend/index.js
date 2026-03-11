@@ -17,7 +17,7 @@ const initMySQL = async() => {
         user: 'root',
         password: 'root',
         database: 'webpj',
-        port: 8700
+        port: 8500
     }); 
     console.log('connected to MySQL database');
 }
@@ -30,7 +30,7 @@ app.get('/login',async (req,res)=> {
 })
 
 
-app.post('/logins',async (req,res) => {
+app.post('/loginPOST',async (req,res) => {
     try{
         let user = req.body;
         const results = await conn.query('Insert into login set ? ',user);
@@ -61,6 +61,21 @@ app.get('/login/:id',async (req,res) => {
         });
     }
 })
+
+app.delete('/loginDEL/:id', async (req,res) => {
+    try{
+        let id = req.params.id;
+        const results = await conn.query('DELETE FROM login WHERE id = ?',id);
+
+        res.json({
+            message: 'Username deleted successfully',
+            data: results[0]
+        });
+    }catch(error){
+        console.log.error('Error deleting username:',error);
+        res.status(500).json({message: 'Error deleting username'}); 
+    }
+});
 
 app.listen(port,async () => {
     await initMySQL();

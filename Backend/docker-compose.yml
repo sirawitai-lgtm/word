@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: webpj
     ports:
-      - "8700:3306"
+      - "8500:3306"
     volumes:
       - mysql_webpj:/var/lib/mysql
     networks:
@@ -26,7 +26,7 @@ services:
       PMA_PASSWORD: root
       UPLOAD_LIMIT: 64M
     ports:
-      - "8701:80"
+      - "8501:80"
     depends_on:
       - db
     networks:
